@@ -1162,7 +1162,7 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@storybook/addon-info@^5.0.0":
+"@storybook/addon-info@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.0.1.tgz#959de89d0c1b24f8d560fac8a44b6d46b4abc5c4"
   integrity sha512-i4shAaEunsKzWwT/B+kRqJzy4ecPlPtweBcHm62ISOgadiuQ+pwiqS9qosVENBzx8yZ0uBO9RoWpbVZxs6L0fQ==
@@ -1183,7 +1183,7 @@
     react-lifecycles-compat "^3.0.4"
     util-deprecate "^1.0.2"
 
-"@storybook/addons@5.0.1", "@storybook/addons@^5.0.0":
+"@storybook/addons@5.0.1", "@storybook/addons@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-5.0.1.tgz#24ae1c80cea973de3e0125614a015fbb0629ac34"
   integrity sha512-8+V/OGmuFivMeqBimw2BPwJgNuR0LKVRAKpUj4cLJTGBpbN+3zEnfv7k99RYKKEtobtaIf1hmQc8/rg8Sf+sRA==
@@ -1361,7 +1361,7 @@
     pretty-hrtime "^1.0.3"
     regenerator-runtime "^0.12.1"
 
-"@storybook/react@^5.0.0":
+"@storybook/react@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-5.0.1.tgz#ceb286d6d3d200dc5b4495132fbb3073bf04a424"
   integrity sha512-CrJAT2XxSunuCG3WGmMrCntZvgDmrmMnvDjvkAuTucBaIJyYgudpy/d9O6OE0p4Hab0WCnoRYW2KN/eLjSCr6g==
