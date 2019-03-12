@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const WorkboxPlugin = require("workbox-webpack-plugin");
 const baseConfig = require("./base.config.js");
 
 module.exports = merge(baseConfig, {
@@ -11,7 +12,11 @@ module.exports = merge(baseConfig, {
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [`${process.cwd()}/dist`]
     }),
-    new webpack.HashedModuleIdsPlugin()
+    new webpack.HashedModuleIdsPlugin(),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true
+    })
   ],
   optimization: {
     runtimeChunk: "single",
