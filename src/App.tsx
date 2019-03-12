@@ -26,9 +26,7 @@ const App: React.FunctionComponent = () => (
       <Route path="/faq" component={() => <div>FAQ Page</div>} />
     </main>
 
-    <footer>
-      Footer <section />
-    </footer>
+    <footer>Footer</footer>
   </>
 );
 
