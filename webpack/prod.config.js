@@ -1,6 +1,6 @@
 const merge = require("webpack-merge");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const baseConfig = require("./client.base.js");
+const baseConfig = require("./base.config.js");
 
 module.exports = merge(baseConfig, {
   context: `${process.cwd()}/client`,
@@ -8,11 +8,11 @@ module.exports = merge(baseConfig, {
   devtool: "source-map",
   plugins: [
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [`${process.cwd()}/server/dist`]
+      cleanOnceBeforeBuildPatterns: [`${process.cwd()}/dist`]
     })
   ],
   output: {
-    path: `${process.cwd()}/server/dist`,
+    path: `${process.cwd()}/dist`,
     filename: "./js/client.js",
     publicPath: "/"
   }

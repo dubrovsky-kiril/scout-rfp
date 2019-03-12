@@ -1,19 +1,13 @@
 const webpack = require("webpack");
 const merge = require("webpack-merge");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const baseConfig = require("./client.base.js");
+const baseConfig = require("./base.config.js");
 
 module.exports = merge(baseConfig, {
   mode: "development",
   devtool: "eval",
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: `${process.cwd()}/webpack/index.dev.html`,
-      filename: "index.html"
-    }),
-    new webpack.HotModuleReplacementPlugin()
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
+    port: 8000,
     hot: true,
     publicPath: "/",
     historyApiFallback: true
