@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button should match snapshot 1`] = `
-<styled.button
+<button
   form=""
   type="button"
 >
   Search
-</styled.button>
+</button>
 `;
