@@ -12,11 +12,7 @@ module.exports = merge(baseConfig, {
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [`${process.cwd()}/dist`]
     }),
-    new webpack.HashedModuleIdsPlugin(),
-    new WorkboxPlugin.GenerateSW({
-      clientsClaim: true,
-      skipWaiting: true
-    })
+    new webpack.HashedModuleIdsPlugin()
   ],
   optimization: {
     runtimeChunk: "single",
