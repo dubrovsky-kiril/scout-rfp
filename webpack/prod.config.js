@@ -1,7 +1,6 @@
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const WorkboxPlugin = require("workbox-webpack-plugin");
 const baseConfig = require("./base.config.js");
 
 module.exports = merge(baseConfig, {
