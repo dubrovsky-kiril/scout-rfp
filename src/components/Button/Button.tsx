@@ -11,12 +11,12 @@ type ButtonTypes = {
   isPending?: boolean;
 };
 
-const Button: React.FunctionComponent<ButtonTypes> = ({
+const Button = ({
   type = "button",
   form = "",
   txt,
   isPending = false
-}) => {
+}: ButtonTypes) => {
   return (
     <button type={type} form={form}>
       {isPending ? "Loading" : txt}
