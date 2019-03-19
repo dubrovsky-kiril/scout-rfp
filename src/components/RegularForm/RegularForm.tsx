@@ -7,9 +7,9 @@ type RegularFormProps = {
   inputId: string;
   inputLabel: string;
   inputType: string;
-  onSubmit(event: React.FormEvent<HTMLElement>): void;
   buttonTxt: string;
   isInputRequired: boolean;
+  onSubmit(event: React.FormEvent<HTMLElement>): void;
 };
 
 const RegularForm = (props: RegularFormProps) => {

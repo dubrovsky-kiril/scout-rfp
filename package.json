@@ -7,17 +7,18 @@
   "scripts": {
     "storybook": "start-storybook -p 6006 -c .storybook",
     "start": "NODE_ENV=dev webpack-dev-server --config webpack/dev.config.js --progress",
+    "lint": "tslint --project tsconfig.json --config tslint.json",
+    "prettier": "prettier --write",
     "test": "jest --watch",
     "build": "NODE_ENV=prod webpack --config webpack/prod.config.js --progress"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && jest"
+      "pre-commit": "tslint && prettier && jest && lint-staged"
     }
   },
   "lint-staged": {
     "*.{js,ts,tsx,md}": [
-      "prettier --write",
       "git add"
     ]
   },
@@ -52,6 +53,8 @@
     "prettier": "1.16.4",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "ts-jest": "^24.0.0",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.3.3333",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
