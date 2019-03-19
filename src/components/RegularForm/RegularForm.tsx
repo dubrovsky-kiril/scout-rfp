@@ -12,16 +12,15 @@ type RegularFormProps = {
   onSubmit(event: React.FormEvent<HTMLElement>): void;
 };
 
-const RegularForm = (props: RegularFormProps) => {
-  const {
-    formId,
-    inputId,
-    inputLabel,
-    inputType,
-    onSubmit,
-    buttonTxt,
-    isInputRequired
-  } = props;
+const RegularForm = ({
+  formId,
+  inputId,
+  inputLabel,
+  inputType,
+  onSubmit,
+  buttonTxt,
+  isInputRequired
+}: RegularFormProps) => {
   return (
     <Form formId={formId} onSubmit={onSubmit} buttonTxt={buttonTxt}>
       <Input

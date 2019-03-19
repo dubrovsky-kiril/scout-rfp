@@ -11,12 +11,7 @@ type InputTypes = {
   isRequired?: boolean;
 };
 
-const Input: React.FunctionComponent<InputTypes> = ({
-  id,
-  label,
-  type,
-  isRequired = false
-}) => {
+const Input = ({ id, label, type, isRequired = false }: InputTypes) => {
   return (
     <div>
       <label htmlFor={id}>{label}</label>

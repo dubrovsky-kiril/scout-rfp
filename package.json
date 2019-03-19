@@ -8,17 +8,17 @@
     "storybook": "start-storybook -p 6006 -c .storybook",
     "start": "NODE_ENV=dev webpack-dev-server --config webpack/dev.config.js --progress",
     "lint": "tslint --project tsconfig.json --config tslint.json",
-    "prettier": "prettier --write",
     "test": "jest --watch",
     "build": "NODE_ENV=prod webpack --config webpack/prod.config.js --progress"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tslint && prettier && jest && lint-staged"
+      "pre-commit": "yarn lint && jest && lint-staged"
     }
   },
   "lint-staged": {
     "*.{js,ts,tsx,md}": [
+      "prettier --write",
       "git add"
     ]
   },
