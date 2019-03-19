@@ -8,7 +8,7 @@ module.exports = {
       __appMod__: JSON.stringify(process.env.NODE_ENV)
     }),
     new HtmlWebPackPlugin({
-      template: `${process.cwd()}/webpack/index.html`,
+      template: `${process.cwd()}/webpack/index-template.html`,
       filename: "index.html"
     })
   ],
