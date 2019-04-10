@@ -1,14 +1,15 @@
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const rootDir = process.cwd();
 
 module.exports = {
-  entry: [`${process.cwd()}/src/index.tsx`],
+  entry: [`${rootDir}/src/index.tsx`],
   plugins: [
     new webpack.DefinePlugin({
-      __appMod__: JSON.stringify(process.env.NODE_ENV)
+      APP_MOD: JSON.stringify(process.env.NODE_ENV)
     }),
     new HtmlWebPackPlugin({
-      template: `${process.cwd()}/webpack/index-template.html`,
+      template: `${rootDir}/webpack/index-template.html`,
       filename: "index.html"
     })
   ],
@@ -16,6 +17,9 @@ module.exports = {
     rules: [{ test: /\.(ts|tsx)?$/, loader: "awesome-typescript-loader" }]
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js"]
+    extensions: [".ts", ".tsx", ".js"],
+    alias: {
+      components: `${rootDir}/src/components`
+    }
   }
 };

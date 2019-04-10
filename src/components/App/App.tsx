@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Route, Link } from "react-router-dom";
-import RegularForm from "./components/RegularForm/RegularForm";
+import RegularForm from "components/RegularForm/RegularForm";
 
 const App: React.FunctionComponent = () => (
   <>
