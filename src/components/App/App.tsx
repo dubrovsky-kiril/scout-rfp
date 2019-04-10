@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Route, Link } from "react-router-dom";
-import RegularForm from "components/RegularForm/RegularForm";
+import { Route, Link, Switch } from "react-router-dom";
+
+const Graphics = React.lazy(() => import("components/Graphics/Graphics"));
 
 const App: React.FunctionComponent = () => (
   <>
@@ -11,37 +12,19 @@ const App: React.FunctionComponent = () => (
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/faq">Users</Link>
+            <Link to="/graphics">Graphics</Link>
           </li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <Route
-        path="/"
-        exact
-        render={() => (
-          <RegularForm
-            formId="productForm"
-            inputId="productId"
-            inputLabel="Product id"
-            inputType="text"
-            onSubmit={e => {
-              e.preventDefault();
-
-              console.log(e.target);
-            }}
-            buttonTxt="Submit"
-            isInputRequired={true}
-          />
-        )}
-      />
-      <Route path="/about" render={() => <div>About Page</div>} />
-      <Route path="/faq" render={() => <div>FAQ Page</div>} />
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route path="/" exact component={() => <div>Home</div>} />
+          <Route path="/graphics" component={Graphics} />
+        </Switch>
+      </React.Suspense>
     </main>
 
     <footer>Footer</footer>

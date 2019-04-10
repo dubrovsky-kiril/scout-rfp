@@ -2,9 +2,10 @@
   "compilerOptions": {
     "baseUrl": "./",
     "sourceMap": true,
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es5",
     "jsx": "react",
+    "moduleResolution": "node",
     "paths": {
       "components/*": ["src/components/*"]
     }
