@@ -2,23 +2,46 @@ const webpack = require("webpack");
 const merge = require("webpack-merge");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const baseConfig = require("./base.config.js");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const rootDir = process.cwd();
 
 module.exports = merge(baseConfig, {
-  context: `${process.cwd()}/client`,
   mode: "production",
-  devtool: "source-map",
+  devtool: "hidden-source-map",
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              localIdentName: "[local]--[hash:base64:5]"
+            }
+          },
+          "sass-loader"
+        ]
+      }
+    ]
+  },
   plugins: [
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [`${process.cwd()}/dist`]
+      cleanOnceBeforeBuildPatterns: [`${rootDir}/dist`]
     }),
-    new webpack.HashedModuleIdsPlugin()
+    new webpack.HashedModuleIdsPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[contenthash].bundle.css",
+      chunkFilename: "[contenthash].chunk.css"
+    })
   ],
   optimization: {
     runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
         vendor: {
-          test: /[\\/]node_modules[\\/]/,
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/](react-router|react-router-dom)[\\/](mobx|mobx-react)[\\/]/,
           name: "vendors",
           chunks: "all"
         }
@@ -26,8 +49,9 @@ module.exports = merge(baseConfig, {
     }
   },
   output: {
-    path: `${process.cwd()}/dist`,
-    filename: "[name].[contenthash].js",
+    path: `${rootDir}/dist`,
+    filename: "[contenthash].bundle.js",
+    chunkFilename: "[contenthash].chunk.js",
     publicPath: "/"
   }
 });
