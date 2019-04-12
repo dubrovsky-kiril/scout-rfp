@@ -1,16 +1,26 @@
 import * as React from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import {
+  Route,
+  Link,
+  Switch,
+  withRouter,
+  RouteComponentProps
+} from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import styles from "./App.scss";
+
+console.log("styles", styles);
 
 const Graphics = React.lazy(() => import("components/Graphics/Graphics"));
 const RegularForm = React.lazy(() =>
   import("components/RegularForm/RegularForm")
 );
 
-interface IApp {
+interface IApp extends RouteComponentProps {
   removeLoader: () => void | null;
 }
 
-const App: React.FC<IApp> = ({ removeLoader }) => {
+const App: React.FC<IApp> = ({ location, removeLoader }) => {
   removeLoader();
 
   return (
@@ -32,13 +42,19 @@ const App: React.FC<IApp> = ({ removeLoader }) => {
       </header>
 
       <main>
-        <React.Suspense fallback={<div>Loading...</div>}>
-          <Switch>
-            <Route exact path="/" component={() => <div>Home</div>} />
-            <Route path="/graphics" component={Graphics} />
-            <Route path="/regular-form" component={RegularForm} />
-          </Switch>
-        </React.Suspense>
+        <TransitionGroup>
+          <CSSTransition classNames="swipe" key={location.key} timeout={500}>
+            <div className={styles["swipe-container"]}>
+              <React.Suspense fallback={<div>Loading...</div>}>
+                <Switch>
+                  <Route exact path="/" component={() => <div>Home</div>} />
+                  <Route exact path="/graphics" component={Graphics} />
+                  <Route exact path="/regular-form" component={RegularForm} />
+                </Switch>
+              </React.Suspense>
+            </div>
+          </CSSTransition>
+        </TransitionGroup>
       </main>
 
       <footer>Footer</footer>
@@ -46,4 +62,4 @@ const App: React.FC<IApp> = ({ removeLoader }) => {
   );
 };
 
-export default App;
+export default withRouter(React.memo(App));

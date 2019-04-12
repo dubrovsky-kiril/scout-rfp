@@ -1,0 +1,25 @@
+.swipe-container {
+  position: absolute;
+}
+
+.swipe-enter {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.swipe-enter-active {
+  transform: translateY(0%);
+  opacity: 1;
+  transition: all 500ms;
+}
+
+.swipe-exit {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.swipe-exit-active {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 500ms;
+}

@@ -7,7 +7,9 @@ const removeLoader = () => {
   const [isMainBundleFetched, setMainBundleFetchStatus] = React.useState(false);
 
   React.useEffect(() => {
-    document.getElementById("loader").remove();
+    if (document.getElementById("loader")) {
+      document.getElementById("loader").remove();
+    }
     setMainBundleFetchStatus(true);
   }, []);
 
