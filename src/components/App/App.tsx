@@ -1,5 +1,7 @@
+import "normalize.css";
 import * as React from "react";
 import { Route, Link, Switch } from "react-router-dom";
+import styles from "./App.scss";
 
 const Graphics = React.lazy(() => import("components/Graphics/Graphics"));
 const RegularForm = React.lazy(() =>
@@ -7,21 +9,8 @@ const RegularForm = React.lazy(() =>
 );
 
 const App: React.FC = () => {
-  const [isBundleFetched, setBundleFetchStatus] = React.useState(false);
-
-  React.useEffect(() => {
-    if (document.getElementById("loader")) {
-      document.getElementById("loader").remove();
-    }
-    setBundleFetchStatus(true);
-  }, []);
-
-  if (!isBundleFetched) {
-    return null;
-  }
-
   return (
-    <>
+    <div className={styles.app}>
       <header>
         <nav>
           <ul>
@@ -38,7 +27,7 @@ const App: React.FC = () => {
         </nav>
       </header>
 
-      <main>
+      <main className={styles.main}>
         <React.Suspense fallback={<div>Loading...</div>}>
           <Switch>
             <Route exact path="/" component={() => <div>Home</div>} />
@@ -48,9 +37,9 @@ const App: React.FC = () => {
         </React.Suspense>
       </main>
 
-      <footer>Footer</footer>
-    </>
+      <footer className={styles.footer}>Footer</footer>
+    </div>
   );
 };
 
-export default React.memo(App);
+export default App;

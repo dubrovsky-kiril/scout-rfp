@@ -8,7 +8,7 @@ module.exports = merge(baseConfig, {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.css|.scss$/,
         use: [
           "style-loader",
           {
