@@ -1,12 +1,11 @@
+import "normalize.css";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "components/App/App.container";
 
 const render = Component => {
-  const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
-
-  renderMethod(
+  ReactDOM.render(
     <BrowserRouter>
       <Component />
     </BrowserRouter>,

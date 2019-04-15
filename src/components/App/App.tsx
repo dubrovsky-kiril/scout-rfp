@@ -1,4 +1,3 @@
-import "normalize.css";
 import * as React from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import styles from "./App.scss";
