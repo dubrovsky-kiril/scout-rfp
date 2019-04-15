@@ -1,34 +1,17 @@
 import * as React from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import Header from "components/Header/Header.container";
+import Main from "components/Main/Main.container";
+import Footer from "components/Footer/Footer";
+import styles from "./App.scss";
 
-const Graphics = React.lazy(() => import("components/Graphics/Graphics"));
-
-const App: React.FunctionComponent = () => (
-  <>
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/graphics">Graphics</Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <React.Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          <Route path="/" exact component={() => <div>Home</div>} />
-          <Route path="/graphics" component={Graphics} />
-        </Switch>
-      </React.Suspense>
-    </main>
-
-    <footer>Footer</footer>
-  </>
-);
+const App: React.FC = () => {
+  return (
+    <div className={styles.app}>
+      <Header />
+      <Main />
+      <Footer />
+    </div>
+  );
+};
 
 export default App;
