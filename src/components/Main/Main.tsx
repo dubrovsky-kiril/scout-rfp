@@ -13,6 +13,7 @@ const Main: React.FC<IMain> = ({ routes }) => {
   return (
     <main className={styles.main}>
       <React.Suspense fallback={<div>Loading...</div>}>
+        hohohoh
         <Switch>
           {routes.map((route, index) => {
             return (
