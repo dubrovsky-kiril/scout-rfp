@@ -5,10 +5,10 @@
   "author": "dubrovsky.K <dubrovsky.kiril@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --config webpack/dev.config.js --progress",
+    "start": "NODE_ENV=development NODE_WEB_API_URL=https://api.exchangeratesapi.io/latest webpack-dev-server --config webpack/dev.config.js --progress",
     "lint": "eslint \"**/*.{js,jsx}\"",
     "test": "jest",
-    "build": "NODE_ENV=production webpack --config webpack/prod.config.js --progress"
+    "build": "NODE_ENV=production NODE_WEB_API_URL=https://api.exchangeratesapi.io/latest webpack --config webpack/prod.config.js --progress"
   },
   "husky": {
     "hooks": {
@@ -16,10 +16,21 @@
     }
   },
   "lint-staged": {
-    "*.{js}": ["prettier --write", "git add"]
+    "*.{js}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.6.2",
+    "apollo-client": "^2.6.3",
+    "apollo-link": "^1.2.12",
+    "apollo-link-error": "^1.1.11",
+    "apollo-link-http": "^1.5.15",
+    "graphql": "^14.4.1",
+    "graphql-tag": "^2.10.1",
     "react": "^16.8.6",
+    "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1"
   },
@@ -49,6 +60,7 @@
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.12.0",
     "prettier": "1.18.2",
+    "prop-types": "^15.7.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.35.0",

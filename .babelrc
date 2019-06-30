@@ -5,7 +5,8 @@
       "babel-plugin-module-resolver",
       {
         "alias": {
-          "components": "./src/components"
+          "#components": "./src/components",
+          "#views": "./src/views"
         }
       }
     ]
