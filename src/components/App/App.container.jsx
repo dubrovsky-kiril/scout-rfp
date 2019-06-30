@@ -1,7 +1,7 @@
-import * as React from "react";
+import React from "react";
 import App from "./App";
 
-const AppContainer: React.FC = () => {
+const AppContainer = () => {
   const [isBundleFetched, setBundleFetchStatus] = React.useState(false);
 
   React.useEffect(() => {
@@ -11,7 +11,7 @@ const AppContainer: React.FC = () => {
     setBundleFetchStatus(true);
   }, []);
 
-  return isBundleFetched ? <App /> : null;
+  return isBundleFetched ? <App /> : <span>Loading..</span>;
 };
 
 export default AppContainer;

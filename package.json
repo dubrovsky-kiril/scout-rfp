@@ -5,61 +5,55 @@
   "author": "dubrovsky.K <dubrovsky.kiril@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "storybook": "start-storybook -p 6006 -c .storybook",
     "start": "NODE_ENV=development webpack-dev-server --config webpack/dev.config.js --progress",
-    "lint": "tslint --project tsconfig.json --config tslint.json",
-    "test": "jest --watch",
+    "lint": "eslint src/index.jsx",
+    "test": "jest --passWithNoTests",
     "build": "NODE_ENV=production webpack --config webpack/prod.config.js --progress"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint && jest && lint-staged"
+      "pre-commit": "concurrently \"yarn lint\" \"yarn test\" \"lint-staged\""
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx,md}": ["prettier --write", "git add"]
+    "*.{js}": ["prettier --write", "git add"]
   },
   "dependencies": {
-    "normalize.css": "^8.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router": "^5.0.0",
-    "react-router-dom": "^5.0.0"
+    "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
-    "@storybook/addon-info": "^5.0.11",
-    "@storybook/addons": "^5.0.11",
-    "@storybook/react": "^5.0.11",
-    "@types/enzyme": "^3.9.1",
-    "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/jest": "^24.0.12",
-    "@types/react": "^16.8.17",
-    "@types/react-dom": "^16.8.4",
-    "@types/react-router": "^5.0.0",
-    "@types/react-router-dom": "^4.3.3",
-    "@types/webpack-env": "^1.13.9",
-    "awesome-typescript-loader": "^5.2.1",
-    "clean-webpack-plugin": "^2.0.2",
-    "css-loader": "^2.1.1",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.12.1",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^4.1.1",
+    "css-loader": "^3.0.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-import-resolver-babel-module": "^5.1.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.2",
+    "eslint-plugin-react": "^7.14.2",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^2.2.0",
+    "husky": "^2.7.0",
     "jest": "^24.8.0",
-    "lint-staged": "^8.1.6",
-    "mini-css-extract-plugin": "^0.6.0",
+    "lint-staged": "^8.2.1",
+    "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.12.0",
-    "prettier": "1.17.0",
+    "prettier": "1.18.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "ts-jest": "^24.0.2",
-    "tslint": "^5.16.0",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.4.5",
-    "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.3.1",
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"
   }
 }
