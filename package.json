@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --config webpack/dev.config.js --progress",
-    "lint": "eslint src/index.jsx",
+    "lint": "eslint src/**.jsx",
     "test": "jest",
     "build": "NODE_ENV=production webpack --config webpack/prod.config.js --progress"
   },
