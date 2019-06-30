@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+
 const rootDir = process.cwd();
 
 module.exports = {
