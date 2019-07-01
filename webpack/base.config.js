@@ -7,8 +7,10 @@ module.exports = {
   entry: [`${rootDir}/src/index.jsx`],
   plugins: [
     new webpack.DefinePlugin({
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-      NODE_WEB_API_URL: JSON.stringify(process.env.NODE_WEB_API_URL)
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+      "process.env.NODE_WEB_API_URL": JSON.stringify(
+        process.env.NODE_WEB_API_URL
+      )
     }),
     new HtmlWebPackPlugin({
       template: `${rootDir}/webpack/index-template.html`,
