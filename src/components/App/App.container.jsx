@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { fetchRates } from "#store/actions";
 import App from "./App";
 
-const AppContainer = ({ dispatch, isDataFetching, data, error }) => {
+const AppContainer = ({ dispatch, isDataFetching }) => {
   const [isBundleFetching, toggleBundleFetchStatus] = React.useState(true);
 
   React.useEffect(() => {
@@ -13,25 +13,16 @@ const AppContainer = ({ dispatch, isDataFetching, data, error }) => {
     }
 
     toggleBundleFetchStatus(!isBundleFetching);
-    dispatch(fetchRates());
   }, []);
 
-  if (isBundleFetching || isDataFetching) {
-    return <span>Loading..</span>;
-  }
-
-  if (error) {
-    return (
-      <span>
-        Something went wrong! Error:
-        {error}
-      </span>
-    );
-  }
-
-  const { base, date, rates } = data;
-
-  return <App currency={base} lastUpdateDate={date} rates={rates} />;
+  return isBundleFetching ? (
+    <span>Loading..</span>
+  ) : (
+    <App
+      isDataFetching={isDataFetching}
+      onClick={() => dispatch(fetchRates())}
+    />
+  );
 };
 
 AppContainer.propTypes = {
@@ -41,8 +32,7 @@ AppContainer.propTypes = {
     rates: PropTypes.objectOf(PropTypes.number)
   }).isRequired,
   isDataFetching: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
