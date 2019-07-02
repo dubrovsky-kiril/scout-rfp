@@ -1,17 +1,53 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { fetchRates } from "#store/actions";
 import App from "./App";
 
-const AppContainer = () => {
-  const [isBundleFetched, setBundleFetchStatus] = React.useState(false);
+const AppContainer = ({ dispatch, isDataFetching, data, error }) => {
+  const [isBundleFetching, toggleBundleFetchStatus] = React.useState(true);
 
   React.useEffect(() => {
     if (document.getElementById("loader")) {
       document.getElementById("loader").remove();
     }
-    setBundleFetchStatus(true);
+
+    toggleBundleFetchStatus(!isBundleFetching);
+    dispatch(fetchRates());
   }, []);
 
-  return isBundleFetched ? <App /> : <span>Loading..</span>;
+  if (isBundleFetching || isDataFetching) {
+    return <span>Loading..</span>;
+  }
+
+  if (error) {
+    return <span>Something went wrong</span>;
+  }
+
+  const { base, date, rates } = data;
+
+  return <App currency={base} lastUpdateDate={date} rates={rates} />;
 };
 
-export default AppContainer;
+AppContainer.propTypes = {
+  data: PropTypes.shape({
+    base: PropTypes.string,
+    date: PropTypes.string,
+    rates: PropTypes.object
+  }).isRequired,
+  isDataFetching: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired
+};
+
+const mapStateToProps = state => {
+  const { isFetching, data, error } = state;
+
+  return {
+    isDataFetching: isFetching,
+    data,
+    error
+  };
+};
+
+export default connect(mapStateToProps)(AppContainer);
