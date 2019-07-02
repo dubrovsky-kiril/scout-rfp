@@ -9,10 +9,12 @@ const requestRatesSuccess = json => ({
   type: REQUEST_RATES_SUCCESS,
   payload: json
 });
-const requestRatesFailure = error => ({
-  type: REQUEST_RATES_FAILURE,
-  paylod: error
-});
+const requestRatesFailure = error => {
+  return {
+    type: REQUEST_RATES_FAILURE,
+    payload: error
+  };
+};
 
 export const fetchRates = () => {
   return dispatch => {
