@@ -21,7 +21,12 @@ const AppContainer = ({ dispatch, isDataFetching, data, error }) => {
   }
 
   if (error) {
-    return <span>Something went wrong</span>;
+    return (
+      <span>
+        Something went wrong! Error:
+        {error}
+      </span>
+    );
   }
 
   const { base, date, rates } = data;
@@ -33,7 +38,7 @@ AppContainer.propTypes = {
   data: PropTypes.shape({
     base: PropTypes.string,
     date: PropTypes.string,
-    rates: PropTypes.object
+    rates: PropTypes.objectOf(PropTypes.number)
   }).isRequired,
   isDataFetching: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
@@ -50,4 +55,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(AppContainer);
+export default connect(mapStateToProps)(React.memo(AppContainer));
