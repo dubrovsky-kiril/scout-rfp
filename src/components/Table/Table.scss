@@ -1,18 +1,21 @@
 .table {
-  color: #fff;
-  border-radius: 8px;
+  color: rgba(216, 112, 147, 1);
   border-collapse: collapse;
-  margin-bottom: 30px;
+  width: 100%;
   td {
-    border: 2px solid #fff;
-    border-radius: 8px;
+    border: 2px solid rgba(216, 112, 147, 1);
+
     padding: 10px;
   }
   thead th {
+    border: 2px solid rgba(216, 112, 147, 1);
+    padding: 10px;
+
     font-size: 18px;
     text-align: center;
     font-weight: bold;
-    background-color: rgba(216, 112, 147, 1);
+    background-color: #fff;
+    width: 50%;
   }
   tbody tr > td {
     &:last-child {
@@ -20,10 +23,10 @@
     }
   }
   tbody tr {
-    background-color: rgba(216, 112, 147, 1);
+    background-color: #fff;
     font-size: 14px;
     &:hover {
-      background-color: rgba(216, 112, 147, 0.8);
+      background-color: rgba(255, 255, 255, 0.8);
       transition: 0.3s;
     }
   }

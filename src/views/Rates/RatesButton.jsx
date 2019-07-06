@@ -16,6 +16,8 @@ const mapStateToProps = state => {
 const FetchRatesButton = ({ dispatch, isDataFetching, isDataFetched }) => {
   const fetchRates = useCallback(() => dispatch(fetchLatestRates()), []);
 
+  console.log(isDataFetching);
+
   return (
     <Button isDisabled={isDataFetching} onClick={fetchRates}>
       {`${isDataFetched ? "Refetch" : "Fetch"} rates`}
