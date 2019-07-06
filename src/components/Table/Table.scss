@@ -1,0 +1,30 @@
+.table {
+  color: #fff;
+  border-radius: 8px;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  td {
+    border: 2px solid #fff;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  thead th {
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgba(216, 112, 147, 1);
+  }
+  tbody tr > td {
+    &:last-child {
+      text-align: center;
+    }
+  }
+  tbody tr {
+    background-color: rgba(216, 112, 147, 1);
+    font-size: 14px;
+    &:hover {
+      background-color: rgba(216, 112, 147, 0.8);
+      transition: 0.3s;
+    }
+  }
+}

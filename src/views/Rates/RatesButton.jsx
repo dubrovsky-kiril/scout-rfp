@@ -18,7 +18,7 @@ const FetchRatesButton = ({ dispatch, isDataFetching, isDataFetched }) => {
 
   return (
     <Button isDisabled={isDataFetching} onClick={fetchRates}>
-      {isDataFetched ? "Refetch rates" : "Fetch rates"}
+      {`${isDataFetched ? "Refetch" : "Fetch"} rates`}
     </Button>
   );
 };
