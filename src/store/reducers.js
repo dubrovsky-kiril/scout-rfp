@@ -5,6 +5,7 @@ import {
 } from "#store/actions";
 
 const initialState = {
+  isFetched: false,
   isFetching: false,
   data: {},
   error: ""
@@ -22,6 +23,7 @@ const ratesReducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         error: "",
+        isFetched: true,
         data: { ...state.data, ...action.payload }
       };
     case REQUEST_RATES_FAILURE:

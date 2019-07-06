@@ -16,11 +16,11 @@ const requestRatesFailure = error => {
   };
 };
 
-export const fetchRates = () => {
+export const fetchLatestRates = () => {
   return dispatch => {
     dispatch(requestRatesStarted());
 
-    return axios(process.env.NODE_WEB_API_URL)
+    return axios(`${process.env.NODE_WEB_API_URL}/latest`)
       .then(res => dispatch(requestRatesSuccess(res.data)))
       .catch(err => dispatch(requestRatesFailure(err)));
   };

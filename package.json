@@ -5,10 +5,10 @@
   "author": "dubrovsky.K <dubrovsky.kiril@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=development NODE_WEB_API_URL=https://api.exchangeratesapi.io/latest webpack-dev-server --config webpack/dev.config.js --progress",
+    "start": "NODE_ENV=development NODE_WEB_API_URL=https://api.exchangeratesapi.io webpack-dev-server --config webpack/dev.config.js --progress",
     "lint": "eslint \"**/*.{js,jsx}\"",
     "test": "jest",
-    "build": "NODE_ENV=production NODE_WEB_API_URL=https://api.exchangeratesapi.io/latest webpack --config webpack/prod.config.js --progress"
+    "build": "NODE_ENV=production NODE_WEB_API_URL=https://api.exchangeratesapi.io webpack --config webpack/prod.config.js --progress"
   },
   "husky": {
     "hooks": {
