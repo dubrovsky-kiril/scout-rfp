@@ -23,7 +23,7 @@ const parseRates = (headers, rates) => {
 const RatesTable = ({ rates }) => {
   const headers = [["Currency", "Rate"]];
 
-  if (!rates) {
+  if (Object.keys(rates).length === 0) {
     return <Table data={headers} />;
   }
 
@@ -31,7 +31,7 @@ const RatesTable = ({ rates }) => {
 };
 
 RatesTable.defaultProps = {
-  rates: undefined
+  rates: {}
 };
 
 RatesTable.propTypes = {

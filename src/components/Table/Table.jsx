@@ -17,11 +17,13 @@ const Table = ({ data }) => {
           })}
         </tr>
       </thead>
-      <tbody>
-        {rows.map((row, index) => {
-          return <TableRow key={index} row={row} />;
-        })}
-      </tbody>
+      {rows.length > 0 && (
+        <tbody>
+          {rows.map((row, index) => {
+            return <TableRow key={index} row={row} />;
+          })}
+        </tbody>
+      )}
     </table>
   );
 };
