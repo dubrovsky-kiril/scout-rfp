@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const NumericTable = ({ caption, data }) => {
+const NumericTable = ({ data }) => {
   return (
     <table>
-      <caption>{caption}</caption>
       <tbody>
         {Object.entries(data).map(([key, value], index) => {
           return (
@@ -20,7 +19,6 @@ const NumericTable = ({ caption, data }) => {
 };
 
 NumericTable.propTypes = {
-  caption: PropTypes.string.isRequired,
   data: PropTypes.objectOf(PropTypes.number).isRequired
 };
 

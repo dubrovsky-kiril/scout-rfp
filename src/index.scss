@@ -1,0 +1,15 @@
+html {
+  box-sizing: border-box;
+  font-family: Roboto Regular, sans-serif;
+  height: 100%;
+  body {
+    height: inherit;
+    letter-spacing: 0.05em;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
