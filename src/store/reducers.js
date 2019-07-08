@@ -1,17 +1,18 @@
 import {
   REQUEST_RATES_STARTED,
   REQUEST_RATES_SUCCESS,
-  REQUEST_RATES_FAILURE
+  REQUEST_RATES_FAILURE,
+  TOGGLE_MODAL
 } from "#store/actions";
 
-const initialState = {
+const ratesInitialState = {
   isFetched: false,
   isFetching: false,
   data: {},
   error: ""
 };
 
-const ratesReducer = (state = initialState, action) => {
+export const ratesReducer = (state = ratesInitialState, action) => {
   switch (action.type) {
     case REQUEST_RATES_STARTED:
       return {
@@ -37,4 +38,18 @@ const ratesReducer = (state = initialState, action) => {
   }
 };
 
-export default ratesReducer;
+const UiInitialState = {
+  isModalOpen: false
+};
+
+export const UiReducer = (state = UiInitialState, action) => {
+  switch (action.type) {
+    case TOGGLE_MODAL:
+      return {
+        ...state,
+        isModalOpen: action.payload
+      };
+    default:
+      return state;
+  }
+};

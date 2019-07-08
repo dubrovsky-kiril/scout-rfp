@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Table from "#components/Table/Table";
 
 const mapStateToProps = state => {
-  const { data } = state;
+  const { data } = state.ratesReducer;
 
   return {
     rates: data.rates
