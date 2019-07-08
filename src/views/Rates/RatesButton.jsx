@@ -21,7 +21,11 @@ const mapDispatchToProps = dispatch => {
 
 const RatesButton = ({ isDataFetching, isDataFetched, fetchRates }) => {
   return (
-    <Button isDisabled={isDataFetching} onClick={fetchRates}>
+    <Button
+      isDisabled={isDataFetching}
+      onClick={fetchRates}
+      isPending={isDataFetching}
+    >
       {`${isDataFetched ? "Refetch" : "Fetch"} rates`}
     </Button>
   );
