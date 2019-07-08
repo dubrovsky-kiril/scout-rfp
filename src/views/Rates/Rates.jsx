@@ -31,10 +31,10 @@ const Rates = ({ base, date, isFetched, error, isModalOpen, hideModal }) => {
     <div className={styles.container}>
       {isModalOpen && (
         <Modal
-          isError
           title="Error!"
           msg={`Error occured during rates fetching: ${error}`}
           onClick={hideModal}
+          buttonTxt="Return back"
         />
       )}
       <div className={styles.rates}>
