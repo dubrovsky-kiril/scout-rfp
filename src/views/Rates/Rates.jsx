@@ -19,11 +19,10 @@ const Rates = ({ base, date, isFetched }) => {
   return (
     <div className={styles.container}>
       <div className={styles.rates}>
-        {isFetched ? (
-          <h2>{`Exchange rates for ${base} based on ${date}`}</h2>
-        ) : (
-          <h2>Exchange rates</h2>
-        )}
+        <h2>
+          {`Exchange rates
+          ${isFetched ? `for ${base} based on ${date}` : ""}`}
+        </h2>
         <RatesTable />
         <RatesButton />
       </div>

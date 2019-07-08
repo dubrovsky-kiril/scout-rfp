@@ -21,9 +21,10 @@ const parseRates = (headers, rates) => {
 };
 
 const RatesTable = ({ rates }) => {
+  const noRates = Object.keys(rates).length === 0;
   const headers = [["Currency", "Rate"]];
 
-  if (Object.keys(rates).length === 0) {
+  if (noRates) {
     return <Table data={headers} />;
   }
 
