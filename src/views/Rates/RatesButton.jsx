@@ -13,12 +13,15 @@ const mapStateToProps = state => {
   };
 };
 
-const RatesButton = ({ dispatch, isDataFetching, isDataFetched }) => {
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchRates: () => dispatch(fetchLatestRates())
+  };
+};
+
+const RatesButton = ({ isDataFetching, isDataFetched, fetchRates }) => {
   return (
-    <Button
-      isDisabled={isDataFetching}
-      onClick={() => dispatch(fetchLatestRates())}
-    >
+    <Button isDisabled={isDataFetching} onClick={fetchRates}>
       {`${isDataFetched ? "Refetch" : "Fetch"} rates`}
     </Button>
   );
@@ -27,7 +30,10 @@ const RatesButton = ({ dispatch, isDataFetching, isDataFetched }) => {
 RatesButton.propTypes = {
   isDataFetched: PropTypes.bool.isRequired,
   isDataFetching: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired
+  fetchRates: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(RatesButton);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RatesButton);
