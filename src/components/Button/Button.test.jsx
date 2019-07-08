@@ -1,19 +1,8 @@
 import React from "react";
 import { create } from "react-test-renderer";
 import { mount, shallow } from "enzyme";
+import Loader from "#components/Loader/Loader";
 import Button from "./Button";
-
-let container;
-
-beforeEach(() => {
-  container = document.createElement("div");
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  document.body.removeChild(container);
-  container = null;
-});
 
 describe("Button component", () => {
   test("Matches the snapshot", () => {
@@ -45,5 +34,14 @@ describe("Button component", () => {
     const button = shallow(<Button onClick={() => {}}>Submit</Button>);
 
     expect(button.text()).toEqual("Submit");
+  });
+  test("Is displaying Loader component when pending", () => {
+    const button = shallow(
+      <Button isPending onClick={() => {}}>
+        Submit
+      </Button>
+    );
+
+    expect(button.contains(<Loader />)).toBe(true);
   });
 });
