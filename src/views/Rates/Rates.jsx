@@ -34,7 +34,7 @@ const Rates = ({ base, date, isFetched, error, isModalOpen, hideModal }) => {
           isError
           title="Error!"
           msg={`Error occured during rates fetching: ${error}`}
-          onClick={() => hideModal()}
+          onClick={hideModal}
         />
       )}
       <div className={styles.rates}>

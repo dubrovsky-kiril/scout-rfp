@@ -26,7 +26,7 @@ const RatesButton = ({
   fetchRates,
   showModal
 }) => {
-  const handleOnClick = () => fetchRates().catch(() => showModal());
+  const handleOnClick = () => fetchRates().catch(showModal);
 
   return (
     <Button
