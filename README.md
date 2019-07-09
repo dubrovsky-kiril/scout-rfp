@@ -8,17 +8,15 @@ ScoutRfp homework
 
 ### Prerequisites
 
-- Node
-- Yarn
+- Node (https://nodejs.org/en/)
+- Yarn (https://yarnpkg.com/lang/en/)
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Installing dependencies
 
 ```
-Give the example
+yarn
 ```
 
 And repeat
