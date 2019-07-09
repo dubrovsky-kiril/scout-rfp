@@ -1,6 +1,4 @@
-# Project Title
-
-ScoutRfp homework
+# ScoutRfp homework
 
 ## Getting Started
 
