@@ -15,6 +15,12 @@ Installing dependencies
 yarn install
 ```
 
+## Running linting
+
+```
+yarn lint
+```
+
 ## Running the tests
 
 ```
