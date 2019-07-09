@@ -1,5 +1,3 @@
-# ScoutRfp homework
-
 ## Getting Started
 
 ```git clone https://github.com/dubrovsky-kiril/scout-rfp.git```
