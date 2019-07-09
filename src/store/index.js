@@ -1,3 +1,7 @@
-import ratesReducer from "#store/reducers";
+import { combineReducers } from "redux";
+import { ratesReducer, UiReducer } from "#store/reducers";
 
-export default ratesReducer;
+export default combineReducers({
+  ratesReducer,
+  UiReducer
+});

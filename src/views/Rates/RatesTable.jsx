@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Table from "#components/Table/Table";
 
 const mapStateToProps = state => {
-  const { data } = state;
+  const { data } = state.ratesReducer;
 
   return {
     rates: data.rates
@@ -21,9 +21,10 @@ const parseRates = (headers, rates) => {
 };
 
 const RatesTable = ({ rates }) => {
+  const noRates = Object.keys(rates).length === 0;
   const headers = [["Currency", "Rate"]];
 
-  if (Object.keys(rates).length === 0) {
+  if (noRates) {
     return <Table data={headers} />;
   }
 

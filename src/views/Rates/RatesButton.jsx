@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchLatestRates } from "#store/actions";
+import { fetchLatestRates, toggleModal } from "#store/actions";
 import Button from "#components/Button/Button";
 
 const mapStateToProps = state => {
-  const { isFetching, isFetched } = state;
+  const { isFetching, isFetched } = state.ratesReducer;
 
   return {
     isDataFetching: isFetching,
@@ -13,11 +13,26 @@ const mapStateToProps = state => {
   };
 };
 
-const RatesButton = ({ dispatch, isDataFetching, isDataFetched }) => {
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchRates: () => dispatch(fetchLatestRates()),
+    showModal: () => dispatch(toggleModal(true))
+  };
+};
+
+const RatesButton = ({
+  isDataFetching,
+  isDataFetched,
+  fetchRates,
+  showModal
+}) => {
+  const handleOnClick = () => fetchRates().catch(showModal);
+
   return (
     <Button
       isDisabled={isDataFetching}
-      onClick={() => dispatch(fetchLatestRates())}
+      onClick={handleOnClick}
+      isPending={isDataFetching}
     >
       {`${isDataFetched ? "Refetch" : "Fetch"} rates`}
     </Button>
@@ -27,7 +42,11 @@ const RatesButton = ({ dispatch, isDataFetching, isDataFetched }) => {
 RatesButton.propTypes = {
   isDataFetched: PropTypes.bool.isRequired,
   isDataFetching: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired
+  fetchRates: PropTypes.func.isRequired,
+  showModal: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(RatesButton);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RatesButton);

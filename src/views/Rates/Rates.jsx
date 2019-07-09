@@ -1,29 +1,47 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { toggleModal } from "#store/actions";
+import Modal from "#components/Modal/Modal";
 import RatesTable from "#views/Rates/RatesTable";
 import RatesButton from "#views/Rates/RatesButton";
 import styles from "./Rates.scss";
 
 const mapStateToProps = state => {
-  const { data, isFetched } = state;
+  const { data, isFetched, error } = state.ratesReducer;
+  const { isModalOpen } = state.UiReducer;
 
   return {
     base: isFetched ? data.base : "",
     date: isFetched ? data.date : "",
-    isFetched
+    isFetched,
+    error,
+    isModalOpen
   };
 };
 
-const Rates = ({ base, date, isFetched }) => {
+const mapDispatchToProps = dispatch => {
+  return {
+    hideModal: () => dispatch(toggleModal(false))
+  };
+};
+
+const Rates = ({ base, date, isFetched, error, isModalOpen, hideModal }) => {
   return (
     <div className={styles.container}>
+      {isModalOpen && (
+        <Modal
+          title="Error!"
+          msg={`Error occured during rates fetching: ${error}`}
+          onClick={hideModal}
+          buttonTxt="Return back"
+        />
+      )}
       <div className={styles.rates}>
-        {isFetched ? (
-          <h2>{`Exchange rates for ${base} based on ${date}`}</h2>
-        ) : (
-          <h2>Exchange rates</h2>
-        )}
+        <h2>
+          {`Exchange rates
+          ${isFetched ? `for ${base} based on ${date}` : ""}`}
+        </h2>
         <RatesTable />
         <RatesButton />
       </div>
@@ -34,7 +52,13 @@ const Rates = ({ base, date, isFetched }) => {
 Rates.propTypes = {
   isFetched: PropTypes.bool.isRequired,
   base: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired
+  date: PropTypes.string.isRequired,
+  error: PropTypes.string.isRequired,
+  isModalOpen: PropTypes.bool.isRequired,
+  hideModal: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(memo(Rates));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(memo(Rates));
