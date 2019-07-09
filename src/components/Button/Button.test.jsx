@@ -31,9 +31,10 @@ describe("Button component", () => {
     expect(mockCallBack.mock.calls.length).toEqual(0);
   });
   test("Is displaying exptected text", () => {
-    const button = shallow(<Button onClick={() => {}}>Submit</Button>);
+    const children = "Submit";
+    const button = shallow(<Button onClick={() => {}}>{children}</Button>);
 
-    expect(button.text()).toEqual("Submit");
+    expect(button.text()).toEqual(children);
   });
   test("Is displaying Loader component when pending", () => {
     const button = shallow(
