@@ -1,3 +1,7 @@
+## Techology stack
+- React
+- Redux
+
 ### Getting Started
 
 ```git clone https://github.com/dubrovsky-kiril/scout-rfp.git```
@@ -13,13 +17,13 @@
 yarn install
 ```
 
-## Run lint
+## Running linting
 
 ```
 yarn lint
 ```
 
-## Run tests
+## Running tests
 
 ```
 yarn test
