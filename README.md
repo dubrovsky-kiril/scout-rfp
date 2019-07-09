@@ -1,4 +1,4 @@
-## Getting Started
+### Getting Started
 
 ```git clone https://github.com/dubrovsky-kiril/scout-rfp.git```
 
@@ -7,21 +7,19 @@
 - Node (https://nodejs.org/en/)
 - Yarn (https://yarnpkg.com/lang/en/)
 
-### Installing
-
-Installing dependencies
+### Installing dependencies
 
 ```
 yarn install
 ```
 
-## Running linting
+## Run lint
 
 ```
 yarn lint
 ```
 
-## Running the tests
+## Run tests
 
 ```
 yarn test
